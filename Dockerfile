@@ -12,9 +12,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY bot.py .
 
-# Create non-root user for security
-RUN useradd --create-home --shell /bin/bash app
-USER app
-
 # Run the bot
 CMD ["python", "bot.py"]
