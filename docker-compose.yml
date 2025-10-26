@@ -1,0 +1,19 @@
+services:
+  uwu-bot:
+    build: .
+    container_name: uwu-bot
+    restart: unless-stopped
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - CHANNEL_ID=${CHANNEL_ID:-1376519136762658948}
+      - CUSTOM_EMOJI_ID=${CUSTOM_EMOJI_ID:-1353062179158626337}
+    volumes:
+      # Optional: mount logs directory if you add logging later
+      - ./logs:/app/logs
+    # No ports needed since this is a Discord bot, not a web server
+    networks:
+      - uwu-bot-network
+
+networks:
+  uwu-bot-network:
+    driver: bridge
